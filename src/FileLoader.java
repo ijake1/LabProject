@@ -1,35 +1,33 @@
-import java.io.File;
-import java.io.FileNotFoundException;
+// Java Program to Illustrate reading from
+// FileReader using FileReader class
+
+// Importing input output classes
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
+// Main class
+// ReadingFromFile
 public class FileLoader {
-    private String folderPath;
 
-    public FileLoader(String folderPath) {
-        this.folderPath = folderPath;
-    }
+    // Main driver method
+    public static void main(String[] args) throws Exception
+    {
+        List<Character> article = new ArrayList<>();  // List to store characters
 
-    public List<String> loadFiles() {
-        List<String> articles = new ArrayList<>();
-        File folder = new File(folderPath);
-        File[] files = folder.listFiles((dir, name) -> name.endsWith(".txt"));
+        // Passing the path to the file as a parameter
+        FileReader fr = new FileReader(
+                "C:/Users/haoli/articles/test1.txt");
 
-        if (files != null) {
-            for (File f : files) {
-                StringBuilder content = new StringBuilder();
-                try (Scanner reader = new Scanner(f)) {
-                    while (reader.hasNextLine()) {
-                        content.append(reader.nextLine()).append("\n");
-                    }
-                    articles.add(content.toString()); // each file = one string
-                } catch (FileNotFoundException e) {
-                    System.out.println("Could not read: " + f.getName());
-                    e.printStackTrace();
-                }
-            }
+        // Declaring loop variable
+        int i;
+        // Holds true till there is nothing to read
+        while ((i = fr.read()) != -1){
+            article.add((char) i);
         }
-        return articles;
+
+        for (Character ch : article) {
+            System.out.print(ch);
+        }
     }
 }
