@@ -1,32 +1,44 @@
-// Java Program to Illustrate reading from
-// FileReader using FileReader class
-
-// Importing input output classes
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-// Main class
-// ReadingFromFile
 public class FileLoader {
 
-    // Main driver method
     public static void main(String[] args) throws Exception
     {
-        List<Character> article = new ArrayList<>();  // List to store characters
-
-        // Passing the path to the file as a parameter
-        FileReader fr = new FileReader(
+        //first dog article
+        List<Character> dogArticle1 = new ArrayList<>();
+        FileReader fr1 = new FileReader(
                 "C:/Users/haoli/articles/test1.txt");
-
-        // Declaring loop variable
-        int i;
-        // Holds true till there is nothing to read
-        while ((i = fr.read()) != -1){
-            article.add((char) i);
+        int i1;
+        while ((i1 = fr1.read()) != -1){
+            dogArticle1.add((char) i1);
+        }
+        for (Character ch : dogArticle1) {
+            System.out.print(ch);
         }
 
-        for (Character ch : article) {
+        //second dog article
+        List<Character> dogArticle2 = new ArrayList<>();
+        FileReader fr2 = new FileReader(
+                "C:/Users/haoli/articles/test1.txt");
+        int i2;
+        while ((i2 = fr2.read()) != -1){
+            dogArticle2.add((char) i2);
+        }
+        for (Character ch : dogArticle2) {
+            System.out.print(ch);
+        }
+
+        //third dog article
+        List<Character> dogArticle3 = new ArrayList<>();
+        FileReader fr3 = new FileReader(
+                "C:/Users/haoli/articles/test1.txt");
+        int i3;
+        while ((i3 = fr3.read()) != -1){
+            dogArticle1.add((char) i3);
+        }
+        for (Character ch : dogArticle3) {
             System.out.print(ch);
         }
     }
