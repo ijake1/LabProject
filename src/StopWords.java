@@ -1,24 +1,26 @@
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.List;
+import java.io.*;
+import java.util.*;
 
 public class StopWords {
+    private ArrayList<String> words;
 
-    public static void main(String[] args) {
-        String filePath = "C://Users//jakes//Downloads//stopwords.txt/"; //
-
+    public StopWords(String filePath) {
+        words = new ArrayList<>();
         try {
-            // Read all lines from the text file into a List
-            List<String> lines = Files.readAllLines(Paths.get(filePath));
-
-            // Print out each line
-            for (String line : lines) {
-                System.out.println(line);
+            Scanner sc = new Scanner(new File(filePath));
+            while (sc.hasNextLine()) {
+                String line = sc.nextLine().trim().toLowerCase();
+                if (!line.equals("")) {
+                    words.add(line);
+                }
             }
-
+            sc.close();
         } catch (IOException e) {
-            System.out.println("Error reading the file: " + e.getMessage());
+            System.out.println("Problem reading stopwords file.");
         }
+    }
+
+    public boolean isStopWord(String w) {
+        return words.contains(w.toLowerCase());
     }
 }
