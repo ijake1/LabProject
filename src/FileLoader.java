@@ -13,7 +13,7 @@ public class FileLoader {
 
         // first dog article
         List<Character> dogArticle1 = new ArrayList<>();
-        FileReader fr1 = new FileReader("C:/Users/jakes/OneDrive/Desktop/CPSC 2231/Lab Project/Articles/Catarticle1.txt"); //change this to ur dog file when try to run it - jake
+        FileReader fr1 = new FileReader("C:/Users/jakes/OneDrive/Desktop/CPSC 2231/Lab Project/Articles/Catarticle1.txt");
         int i1;
         while ((i1 = fr1.read()) != -1) dogArticle1.add((char) i1);
         fr1.close();
