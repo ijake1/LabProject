@@ -1,6 +1,11 @@
 # Lab Project
-## Program that runs basic text analysis with the goal of comparing articles about one topic.
-### Group Members - Lauren Lanning & Jake Samuel
+
+### This project is to code a program that runs basic text analysis with the goal of comparing articles about the same topics.
+
+- Group Members:
+    - Lauren Lanning
+    - Jake Samuel
 
 
-### idk
+### Topics: 
+Dog and Cat 
