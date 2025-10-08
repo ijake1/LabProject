@@ -6,8 +6,10 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+
 public class FileLoader {
-private String filename;
+    private ArrayList<String> words = new ArrayList<>();
+    private String filename;
 
 public FileLoader(String filename) {
     this.filename = filename;
@@ -27,6 +29,13 @@ public void loadFile() {
     article = article.replaceAll("[^a-zA-Z0-9\\s]", "");
     String[] a = article.split("\\s+");
     ArrayList<String> articleList = new ArrayList<>(Arrays.asList(a));
+    words.addAll(articleList);
     System.out.println(articleList);
 }
+    public ArrayList<String> getWords() {
+        return words;
+    }
+
 }
+
+
