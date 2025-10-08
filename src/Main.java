@@ -16,10 +16,18 @@ public class Main {
             }
         }
 
+        ArrayList<String> unique = new ArrayList<>();
+        for (String w : filtered) {
+            if (!unique.contains(w)) {
+                unique.add(w);
+            }
+        }
 
         System.out.println("Total words: " + words.size());
         System.out.println("  ");
         System.out.println("After removing stopwords: " + filtered.size());
+        System.out.println("  ");
+        System.out.println("Unique words: " + unique.size());
     }
 }
 
