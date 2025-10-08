@@ -1,54 +1,29 @@
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class FileLoader {
 
-    public ArrayList<String> loadWordsFromFolder(String folderPath) throws Exception {
-        return loadWords();
-    }
-
-    public ArrayList<String> loadWords() throws Exception {
-        ArrayList<String> allWords = new ArrayList<>();
-
-        // first dog article
-        List<Character> dogArticle1 = new ArrayList<>();
-        FileReader fr1 = new FileReader("C:/Users/jakes/OneDrive/Desktop/CPSC 2231/Lab Project/Articles/Catarticle1.txt");
-        int i1;
-        while ((i1 = fr1.read()) != -1) dogArticle1.add((char) i1);
-        fr1.close();
-        for (Character ch : dogArticle1) System.out.print(ch);
-        allWords.addAll(toWords(dogArticle1));
-
-        // second dog article
-        List<Character> dogArticle2 = new ArrayList<>();
-        FileReader fr2 = new FileReader("C:/Users/jakes/OneDrive/Desktop/CPSC 2231/Lab Project/Articles/Catarticle2.txt");
-        int i2;
-        while ((i2 = fr2.read()) != -1) dogArticle2.add((char) i2);
-        fr2.close();
-        for (Character ch : dogArticle2) System.out.print(ch);
-        allWords.addAll(toWords(dogArticle2));
-
-        // third dog article
-        List<Character> dogArticle3 = new ArrayList<>();
-        FileReader fr3 = new FileReader("C:/Users/jakes/OneDrive/Desktop/CPSC 2231/Lab Project/Articles/Catarticle3.txt");
-        int i3;
-        while ((i3 = fr3.read()) != -1) dogArticle3.add((char) i3); // fixed
-        fr3.close();
-        for (Character ch : dogArticle3) System.out.print(ch);
-        allWords.addAll(toWords(dogArticle3));
-
-        return allWords;
-    }
-
-    private ArrayList<String> toWords(List<Character> chars) {
-        ArrayList<String> words = new ArrayList<>();
-        StringBuilder sb = new StringBuilder();
-        for (Character ch : chars) {
-            if (Character.isLetter(ch) || ch == '\'') sb.append(Character.toLowerCase(ch));
-            else if (sb.length() > 0) { words.add(sb.toString()); sb.setLength(0); }
+    public static void main(String[] args) throws Exception {
+        //first dog article
+        String filePath1 = "C:/Users//laure/OneDrive/Documents/Programming Lab/Dog Articles/DogArticle1.txt";
+        String article1 = "";
+        try {
+            // Read all lines from the text file into a List
+            List<String> lines1 = Files.readAllLines(Paths.get(filePath1));
+            for (String line : lines1) {
+                article1 += line + " ";
+            }
+        } catch (IOException e) {
+            System.out.println("Error reading the file: " + e.getMessage());
         }
-        if (sb.length() > 0) words.add(sb.toString());
-        return words;
+        article1 = article1.replaceAll("[^a-zA-Z0-9\\s]", "");
+        String[] a1 = article1.split("\\s+");
+        ArrayList<String> dogArticle1 = new ArrayList<>(Arrays.asList(a1));
+        System.out.println("Article 1: " + dogArticle1);
     }
 }
