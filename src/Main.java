@@ -18,6 +18,7 @@ public class Main {
 
 
         System.out.println("Total words: " + words.size());
+        System.out.println("  ");
         System.out.println("After removing stopwords: " + filtered.size());
     }
 }
