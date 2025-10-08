@@ -13,21 +13,20 @@ public FileLoader(String filename) {
     this.filename = filename;
 }
 
-private void loadFile() {
-    String filePath1 = filename;
-    String article1 = "";
+public void loadFile() {
+    String filePath = filename;
+    String article = "";
     try {
-        // Read all lines from the text file into a List
-        List<String> lines1 = Files.readAllLines(Paths.get(filePath1));
-        for (String line : lines1) {
-            article1 += line + " ";
+        List<String> lines = Files.readAllLines(Paths.get(filePath));
+        for (String line : lines) {
+            article += line + " ";
         }
     } catch (IOException e) {
         System.out.println("Error reading the file: " + e.getMessage());
     }
-    article1 = article1.replaceAll("[^a-zA-Z0-9\\s]", "");
-    String[] a1 = article1.split("\\s+");
-    ArrayList<String> dogArticle1 = new ArrayList<>(Arrays.asList(a1));
-    System.out.println("Article 1: " + dogArticle1);
+    article = article.replaceAll("[^a-zA-Z0-9\\s]", "");
+    String[] a = article.split("\\s+");
+    ArrayList<String> articleList = new ArrayList<>(Arrays.asList(a));
+    System.out.println(articleList);
 }
 }
