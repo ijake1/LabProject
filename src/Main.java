@@ -26,7 +26,7 @@ public class Main
 
         ArrayList<String> file1R = new ArrayList<>(file1.removeStopWords(stop));
         ArrayList<String> file2R = new ArrayList<>(file2.removeStopWords(stop));
-        ArrayList<String> file3R = new ArrayList<>(file2.removeStopWords(stop));
+        ArrayList<String> file3R = new ArrayList<>(file3.removeStopWords(stop));
 
         System.out.println();
         System.out.println("File 1 Total Words After Removing Stop Words: " + file1R.size());
