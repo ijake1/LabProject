@@ -31,6 +31,7 @@ public class FileLoader {
         words.addAll(articleList);
         System.out.println(articleList);
     }
+
     public ArrayList<String> getWords() {
         return words;
     }
@@ -54,3 +55,26 @@ public class FileLoader {
         }
         return unique;
     }
+    public void countWordFrequency(ArrayList<String> wordList) {
+        ArrayList<String> wordsUsed = new ArrayList<>();
+        ArrayList<Integer> counts = new ArrayList<>();
+
+        for (String w : wordList) {
+            w = w.toLowerCase();
+            if (wordsUsed.contains(w)) {
+                int index = wordsUsed.indexOf(w);
+                counts.set(index, counts.get(index) + 1);
+            } else {
+                wordsUsed.add(w);
+                counts.add(1);
+            }
+        }
+
+        System.out.println();
+        System.out.println("Word Frequency Ranking:");
+        for (int i = 0; i < wordsUsed.size(); i++) {
+            System.out.println(wordsUsed.get(i) + ": " + counts.get(i));
+        }
+    }
+}
+
