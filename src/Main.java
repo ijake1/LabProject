@@ -33,8 +33,9 @@ public class Main
         System.out.println("File 2 Total Words After Removing Stop Words: " + file2R.size());
         System.out.println("File 3 Total Words After Removing Stop Words: " + file3R.size());
 
-        System.out.println("File 1 Total Unique Words: " + uniqueWords(file1R));
-        System.out.println("File 2 Total Unique Words: " + uniqueWords(file2R));
-        System.out.println("File 3 Total Unique Words: " + uniqueWords(file3R));
+        System.out.println();
+        System.out.println("File 1 Total Unique Words: " + file1.uniqueWords(file1R).size());
+        System.out.println("File 2 Total Unique Words: " + file2.uniqueWords(file2R).size());
+        System.out.println("File 3 Total Unique Words: " + file3.uniqueWords(file3R).size());
     }
 }
