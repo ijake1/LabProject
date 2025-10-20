@@ -20,3 +20,5 @@ To achieve this, we collected and articles about the same topics. Then each arti
 4. **Word Frequency Ranking:** The frequency disribution of the remaining words is calculated and displayed, helping to identify key terms used in each article.
 
 The application is composed using three distinct classes- Main, FileLoader, and StopWords. These seperate classes ensure clarity and processing that will help with more advanced features in future milestones.
+
+<img alt="UML Diagram for milestone 1" src="Milestone1UML.drawio.svg">
