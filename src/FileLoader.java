@@ -14,7 +14,7 @@ public class FileLoader {
         this.filename = filename;
     }
 
-    public void loadFile() {
+    public ArrayList<String> loadFile() {
         String filePath = filename;
         String article = "";
         try {
@@ -29,52 +29,6 @@ public class FileLoader {
         String[] a = article.split("\\s+");
         ArrayList<String> articleList = new ArrayList<>(Arrays.asList(a));
         words.addAll(articleList);
-        System.out.println(articleList);
-    }
-
-    public ArrayList<String> getWords() {
-        return words;
-    }
-
-    public ArrayList<String> removeStopWords(StopWords stop) {
-        ArrayList<String> filtered = new ArrayList<>();
-        for (String w : words) {
-            if (!stop.isStopWord(w)) {
-                filtered.add(w);
-            }
-        }
-        return filtered;
-    }
-
-    public ArrayList<String> uniqueWords(ArrayList<String> filteredList) {
-        ArrayList<String> unique = new ArrayList<>();
-        for (String w : filteredList) {
-            if (!unique.contains(w)) {
-                unique.add(w);
-            }
-        }
-        return unique;
-    }
-    public void countWordFrequency(ArrayList<String> wordList) {
-        ArrayList<String> wordsUsed = new ArrayList<>();
-        ArrayList<Integer> counts = new ArrayList<>();
-
-        for (String w : wordList) {
-            w = w.toLowerCase();
-            if (wordsUsed.contains(w)) {
-                int index = wordsUsed.indexOf(w);
-                counts.set(index, counts.get(index) + 1);
-            } else {
-                wordsUsed.add(w);
-                counts.add(1);
-            }
-        }
-
-        System.out.println();
-        System.out.println("Word Frequency Ranking:");
-        for (int i = 0; i < wordsUsed.size(); i++) {
-            System.out.println(wordsUsed.get(i) + ": " + counts.get(i));
-        }
+        return articleList;
     }
 }
-
