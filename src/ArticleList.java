@@ -67,4 +67,49 @@ public class ArticleList {
             System.out.println("Cannot determine which article has the richest vocabulary.");
         }
     }
+
+    public void top5Words() {
+        ArrayList<String> wordsUsed = new ArrayList<>();
+        ArrayList<Integer> counts = new ArrayList<>();
+
+        //count word frequencies
+        for (String w : words) {
+            w = w.toLowerCase();
+            if (wordsUsed.contains(w)) {
+                int index = wordsUsed.indexOf(w);
+                counts.set(index, counts.get(index) + 1);
+            } else {
+                wordsUsed.add(w);
+                counts.add(1);
+            }
+        }
+
+        ArrayList<String> wordsUsedTop5 = new ArrayList<>();
+        ArrayList<Integer> countsTop5 = new ArrayList<>();
+
+        //find the top 5 words
+        for (int i = 0; i < 5; i++) {
+            int mostFrequent = counts.get(0);
+            int frequentIndex = 0;
+
+            for (int j = 1; j < counts.size(); j++) {
+                if (counts.get(j) > mostFrequent) {
+                    mostFrequent = counts.get(j);
+                    frequentIndex = j;
+                }
+            }
+
+            wordsUsedTop5.add(words.get(frequentIndex));
+            countsTop5.add(counts.get(frequentIndex));
+
+            words.remove(frequentIndex);
+            counts.remove(frequentIndex);
+        }
+
+        //print results
+        System.out.println("Word Frequency Top 5 Ranking:");
+        for (int i = 0; i < wordsUsedTop5.size(); i++) {
+            System.out.println(wordsUsedTop5.get(i) + ": " + countsTop5.get(i));
+        }
+    }
 }
