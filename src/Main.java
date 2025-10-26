@@ -54,5 +54,12 @@ public class Main {
 
         System.out.println();
         article1.richestVocab(article1, article2, article3);
+
+        System.out.println();
+        article1.top5Words();
+        System.out.println();
+        article2.top5Words();
+        System.out.println();
+        article3.top5Words();
     }
 }
