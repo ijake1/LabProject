@@ -62,7 +62,7 @@ public class ArticleList {
         } else if (uniqueWords2 > uniqueWords1 && uniqueWords2 > uniqueWords3) {
             System.out.println("The article with the richest vocabulary is article 2 with " + a2.uniqueWords().size() + " unique words.");
         } else if (uniqueWords3 > uniqueWords1 && uniqueWords3 > uniqueWords2) {
-            System.out.println("The article with the richest vocabulary is article 2 with " + a2.uniqueWords().size() + " unique words.");
+            System.out.println("The article with the richest vocabulary is article 3 with " + a3.uniqueWords().size() + " unique words.");
         } else {
             System.out.println("Cannot determine which article has the richest vocabulary.");
         }
