@@ -141,9 +141,15 @@ public class ArticleList {
         }
 
         //uses lexicon map to measure article score
-        int score = 0;
+        double score = 0;
+        for(String w : words) {
+            for(String k : lexiScores.keySet()) {
+                if(w.equals(k)) {
+                    score = score + lexiScores.get(k);
+                }
+            }
+        }
         
-
         //prints attitude based on score
         if(score >= 0.8) {
             System.out.println("The article is very positive with a lexicon score of " + score + ".");
