@@ -61,5 +61,12 @@ public class Main {
         article2.top5Words();
         System.out.println();
         article3.top5Words();
+
+        System.out.println();
+        article1.attitude();
+        System.out.println();
+        article2.attitude();
+        System.out.println();
+        article3.attitude();
     }
 }
