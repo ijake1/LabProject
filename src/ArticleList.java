@@ -112,4 +112,49 @@ public class ArticleList {
             System.out.println(wordsUsedTop5.get(i) + ": " + countsTop5.get(i));
         }
     }
+
+    public void attitude() {
+        //converts lexicon score files into a map
+        String filePath = "C:/Users/laure/OneDrive/Documents/Programming Lab/lexicon_scores.txt";
+        Map<String, Double> lexiScores = new HashMap<>();
+
+        try(BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split("\t", 2);
+
+                if(parts.length == 2) {
+                    String key = parts[0].trim();
+                    try {
+                        Double value = Double.parseDouble(parts[1].trim());
+                        lexiScores.put(key, value);
+                    } catch (NumberFormatException e) {
+                        System.err.println("Warning: Could not create double value in line - "+ line);
+                    }
+
+                } else {
+                    System.err.println("Skipping malformed line: " + line);
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Error reading file");
+        }
+
+        //uses lexicon map to measure article score
+        int score = 0;
+        
+
+        //prints attitude based on score
+        if(score >= 0.8) {
+            System.out.println("The article is very positive with a lexicon score of " + score + ".");
+        } else if (score > 0) {
+            System.out.println("The article is positive with a lexicon score of " + score + ".");
+        } else if (score == 0) {
+            System.out.println("The article is neutral with a lexicon score of " + score + ".");
+        } else if (score > -0.8) {
+            System.out.println("The article is negative with a lexicon score of " + score + ".");
+        } else {
+            System.out.println("The article is very negative with a lexicon score of " + score + ".");
+        }
+    }
 }
