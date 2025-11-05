@@ -26,7 +26,6 @@ public class FileLoader {
      * Reads the file line by line, concatenates its contents,
      * removes punctuation, splits the text into words,
      * and stores them in an ArrayList.
-     *
      * @return an ArrayList<String> containing all cleaned words from the file
      */
     public ArrayList<String> loadFile() {
