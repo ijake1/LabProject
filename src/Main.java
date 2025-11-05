@@ -2,13 +2,9 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        FileLoader file1 = new FileLoader("C:/Users/laure/OneDrive/Documents/Programming Lab/Dog Articles/DogArticle1.txt");
-        FileLoader file2 = new FileLoader("C:/Users/laure/OneDrive/Documents/Programming Lab/Dog Articles/DogArticle2.txt");
-        FileLoader file3 = new FileLoader("C:/Users/laure/OneDrive/Documents/Programming Lab/Dog Articles/DogArticle3.txt");
-
-        //FileLoader file1 = new FileLoader("C:/Users/jakes/OneDrive/Desktop/CPSC 2231/Lab Project/Articles/Catarticle1.txt");
-        //FileLoader file2 = new FileLoader("C:/Users/jakes/OneDrive/Desktop/CPSC 2231/Lab Project/Articles/Catarticle2.txt");
-        //FileLoader file3 = new FileLoader("C:/Users/jakes/OneDrive/Desktop/CPSC 2231/Lab Project/Articles/Catarticle3.txt");
+        FileLoader file1 = new FileLoader("data/dog/DogArticle1.txt");
+        FileLoader file2 = new FileLoader("data/dog/DogArticle2.txt");
+        FileLoader file3 = new FileLoader("data/dog/DogArticle3.txt");
 
         ArticleList article10 = new ArticleList(file1.loadFile());
         ArticleList article20 = new ArticleList(file2.loadFile());
@@ -19,8 +15,7 @@ public class Main {
         System.out.println("File 2 Total Words: " + article20.getWords().size());
         System.out.println("File 3 Total Words: " + article30.getWords().size());
 
-        //StopWords stop = new StopWords("C:/Users/jakes/OneDrive/Desktop/CPSC 2231/Lab Project/stopwords.txt");
-        StopWords stop = new StopWords("C:/Users/laure/OneDrive/Documents/Programming Lab/stopwords.txt");
+        StopWords stop = new StopWords("data/stopwords.txt");
 
         ArrayList<String> file1R = new ArrayList<>(article10.removeStopWords(stop));
         ArrayList<String> file2R = new ArrayList<>(article20.removeStopWords(stop));

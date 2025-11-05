@@ -172,7 +172,7 @@ public class ArticleList {
      */
     public void attitude() {
         //converts lexicon score files into a map
-        String filePath = "C:/Users/laure/OneDrive/Documents/Programming Lab/lexicon_scores.txt";
+        String filePath = "data/lexicon_scores.txt";
         Map<String, Double> lexiScores = new HashMap<>();
 
         try(BufferedReader br = new BufferedReader(new FileReader(filePath))) {
@@ -200,10 +200,9 @@ public class ArticleList {
         //uses lexicon map to measure article score
         double score = 0;
         for(String w : words) {
-            for(String k : lexiScores.keySet()) {
-                if(w.equals(k)) {
-                    score = score + lexiScores.get(k);
-                }
+            w = w.toLowerCase();
+            if(lexiScores.containsKey(w)) {
+                score = score + lexiScores.get(w);
             }
         }
         
