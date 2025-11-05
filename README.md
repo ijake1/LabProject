@@ -24,3 +24,6 @@ To achieve this, we collected and articles about the same topics. Then each arti
 7. **Which articles expressed "positive" vs "negative" attitude**
 
 The application is composed using four distinct classes- Main, FileLoader, StopWords, and ArticleList. These seperate classes ensure clarity and processing that will help with more advanced features in future milestones.
+
+<img alt="UML Diagram for milestone 2" src="DiagramforMilestone2.png"
+
