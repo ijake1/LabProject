@@ -1,16 +1,42 @@
 import java.util.ArrayList;
 
+/**
+ * The ArticleList class represents a list of words extracted from an article.
+ * It provides various text processing utilities such as:
+ *  - Removing stop words
+ *  - Finding unique words
+ *  - Counting word frequencies
+ *  - Comparing vocabulary richness between articles
+ *  - Identifying the top 5 most frequent words
+ *  - Evaluating sentiment (attitude) based on a lexicon file
+ */
 public class ArticleList {
+    // Stores all words in the article
     private ArrayList<String> words;
 
+    /**
+     * Constructor that initializes the ArticleList with a given list of words.
+     * Creates a copy of the input list to avoid modifying the original.
+     * @param words list of words extracted from an article
+     */
     public ArticleList(ArrayList<String> words) {
         this.words = new ArrayList<>(words);
     }
 
+    /**
+     * Getter method to retrieve the list of words.
+     * @return ArrayList of words in the article
+     */
     public ArrayList<String> getWords() {
         return words;
     }
 
+    /**
+     * Removes stop words (common words like "the", "and", etc.)
+     * using a provided StopWords object.
+     * @param stop a StopWords object containing the list of stop words
+     * @return a new ArrayList<String> with stop words removed
+     */
     public ArrayList<String> removeStopWords(StopWords stop) {
         ArrayList<String> filtered = new ArrayList<>();
         for (String w : words) {
@@ -21,6 +47,10 @@ public class ArticleList {
         return filtered;
     }
 
+    /**
+     * Returns a list of unique words from the article.
+     * @return ArrayList<String> containing only unique words
+     */
     public ArrayList<String> uniqueWords() {
         ArrayList<String> unique = new ArrayList<>();
         for (String w : words) {
@@ -31,6 +61,9 @@ public class ArticleList {
         return unique;
     }
 
+    /**
+     * Counts and prints the frequency of each word in the article.
+     */
     public void countWordFrequency() {
         ArrayList<String> wordsUsed = new ArrayList<>();
         ArrayList<Integer> counts = new ArrayList<>();
@@ -53,6 +86,13 @@ public class ArticleList {
         }
     }
 
+    /**
+     * Compares three ArticleList objects and determines
+     * which article has the richest vocabulary (most unique words).
+     * @param a1 first article
+     * @param a2 second article
+     * @param a3 third article
+     */
     public void richestVocab(ArticleList a1, ArticleList a2, ArticleList a3) {
         int uniqueWords1 = a1.uniqueWords().size();
         int uniqueWords2 = a2.uniqueWords().size();
@@ -68,6 +108,7 @@ public class ArticleList {
         }
     }
 
+    
     public void top5Words() {
         ArrayList<String> wordsUsed = new ArrayList<>();
         ArrayList<Integer> counts = new ArrayList<>();
@@ -84,26 +125,29 @@ public class ArticleList {
             }
         }
 
+        ArrayList<String> wordsCopy = new ArrayList<>(wordsUsed);
+        ArrayList<Integer> countsCopy = new ArrayList<>(counts);
+        
         ArrayList<String> wordsUsedTop5 = new ArrayList<>();
         ArrayList<Integer> countsTop5 = new ArrayList<>();
 
         //find the top 5 words
         for (int i = 0; i < 5; i++) {
-            int mostFrequent = counts.get(0);
+            int mostFrequent = countsCopy.get(0);
             int frequentIndex = 0;
 
-            for (int j = 1; j < counts.size(); j++) {
-                if (counts.get(j) > mostFrequent) {
-                    mostFrequent = counts.get(j);
+            for (int j = 1; j < countsCopy.size(); j++) {
+                if (countsCopy.get(j) > mostFrequent) {
+                    mostFrequent = countsCopy.get(j);
                     frequentIndex = j;
                 }
             }
 
-            wordsUsedTop5.add(words.get(frequentIndex));
-            countsTop5.add(counts.get(frequentIndex));
+            wordsUsedTop5.add(wordsCopy.get(frequentIndex));
+            countsTop5.add(countsCopy.get(frequentIndex));
 
-            words.remove(frequentIndex);
-            counts.remove(frequentIndex);
+            wordsCopy.remove(frequentIndex);
+            countsCopy.remove(frequentIndex);
         }
 
         //print results
@@ -113,6 +157,14 @@ public class ArticleList {
         }
     }
 
+    /**
+     * Performs a simple sentiment analysis (attitude evaluation)
+     * by comparing words in the article against a lexicon of word scores.
+     * 
+     * Each word’s score (positive or negative) contributes to an overall total.
+     * Based on the total score, the article is categorized as positive,
+     * neutral, or negative.
+     */
     public void attitude() {
         //converts lexicon score files into a map
         String filePath = "C:/Users/laure/OneDrive/Documents/Programming Lab/lexicon_scores.txt";
@@ -151,13 +203,13 @@ public class ArticleList {
         }
         
         //prints attitude based on score
-        if(score >= 0.8) {
+        if(score >= 3) {
             System.out.println("The article is very positive with a lexicon score of " + score + ".");
         } else if (score > 0) {
             System.out.println("The article is positive with a lexicon score of " + score + ".");
         } else if (score == 0) {
             System.out.println("The article is neutral with a lexicon score of " + score + ".");
-        } else if (score > -0.8) {
+        } else if (score > -3) {
             System.out.println("The article is negative with a lexicon score of " + score + ".");
         } else {
             System.out.println("The article is very negative with a lexicon score of " + score + ".");
