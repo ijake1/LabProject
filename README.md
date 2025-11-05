@@ -10,6 +10,7 @@
 ### Article Topics: 
 1. Why owning a dog is good
 2. Why owning a cat is good
+3. Soccer
 
 ## Milestone 2 Abstract
 After this milestone is completed the software application is able to preprocess the files downloaded into the library, removes the stopwords, calculates basic statistics, and ranks words by frequencies. It is also able to highlight differences between articles related to each topic like finding the richest vocabulary, repeated words, and attitudes of articles.
