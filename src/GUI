@@ -1,5 +1,49 @@
+import java.util.Scanner;
 public class GUI {
+    static Scanner input = new Scanner(System.in);
+
     public static void main(String[] args) {
+        mainMenu();
+    }
+
+    // MAIN MENU
+    public static void mainMenu() {
+        boolean finished = false;
+
+        while (!finished) {
+            System.out.println("Basic Text Analysis Tool:");
+            System.out.println("Select Number for Function.");
+            System.out.println("1. Select Topic");
+            System.out.println("2. Add Topic");
+            System.out.println("3. Add Article");
+            System.out.println("4. Exit");
+            System.out.print("Enter Choice: ");
+
+            int num = input.nextInt();
+
+            switch (num) {
+                case 1 -> selectTopicMenu();
+                case 2 -> addTopicMenu();
+                case 3 -> addArticleMenu();
+                case 4 -> {
+                    System.out.println("Basic Text Analysis Tool Closed.");
+                    finished = true;
+                }
+                default -> System.out.println("Invalid input. Please eneter a number 1-4.");
+            }
+        }
+    }
+
+    // SUBMENUS
+    public static void selectTopicMenu() {
         
+    }
+
+    public static void addTopicMenu() {
+
+    }
+
+    public static void addArticleMenu() {
+
     }
 }
