@@ -113,7 +113,7 @@ public class ArticleList {
         }
     }
 
-    
+
     public void top5Words() {
         ArrayList<String> wordsUsed = new ArrayList<>();
         ArrayList<Integer> counts = new ArrayList<>();
@@ -132,7 +132,7 @@ public class ArticleList {
 
         ArrayList<String> wordsCopy = new ArrayList<>(wordsUsed);
         ArrayList<Integer> countsCopy = new ArrayList<>(counts);
-        
+
         ArrayList<String> wordsUsedTop5 = new ArrayList<>();
         ArrayList<Integer> countsTop5 = new ArrayList<>();
 
@@ -165,14 +165,14 @@ public class ArticleList {
     /**
      * Performs a simple sentiment analysis (attitude evaluation)
      * by comparing words in the article against a lexicon of word scores.
-     * 
+     *
      * Each word’s score (positive or negative) contributes to an overall total.
      * Based on the total score, the article is categorized as positive,
      * neutral, or negative.
      */
     public void attitude() {
         //converts lexicon score files into a map
-        String filePath = "data/lexicon_scores.txt";
+        String filePath = "files/lexicon_scores.txt";
         Map<String, Double> lexiScores = new HashMap<>();
 
         try(BufferedReader br = new BufferedReader(new FileReader(filePath))) {
@@ -200,12 +200,13 @@ public class ArticleList {
         //uses lexicon map to measure article score
         double score = 0;
         for(String w : words) {
-            w = w.toLowerCase();
-            if(lexiScores.containsKey(w)) {
-                score = score + lexiScores.get(w);
+            for(String k : lexiScores.keySet()) {
+                if(w.equals(k)) {
+                    score = score + lexiScores.get(k);
+                }
             }
         }
-        
+
         //prints attitude based on score
         if(score >= 3) {
             System.out.println("The article is very positive with a lexicon score of " + score + ".");
