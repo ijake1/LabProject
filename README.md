@@ -12,7 +12,7 @@
 2. Why owning a cat is good
 3. Soccer
 
-## Milestone 3 Abstract
+## Milestone 3 
 After completing this milestone, the software application is now fully interactive and allows the end user to choose which topic they want to analyze and to add new articles directly into the system. The overall goal of this milestone is to make the application usable without modifying the code each time a new dataset needs to be analyzed.
 
 To achieve this, we collected and articles about the same topics. Then each article is processed by preforming the following tasks:
