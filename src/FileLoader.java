@@ -1,10 +1,9 @@
-import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * The FileLoader class reads the contents of a text file,
@@ -12,8 +11,6 @@ import java.nio.file.Paths;
  * in an ArrayList<String> for later use.
  */
 public class FileLoader {
-    // Stores all words extracted from the file
-    private ArrayList<String> words = new ArrayList<>();
     // The name (or path) of the file to be read
     private String filename;
 
@@ -30,19 +27,19 @@ public class FileLoader {
      */
     public ArrayList<String> loadFile() {
         String filePath = filename;
-        String article = "";
+        StringBuilder article = new StringBuilder();
+
         try {
             List<String> lines = Files.readAllLines(Paths.get(filePath));
             for (String line : lines) {
-                article += line + " ";
+                article.append(line).append(" ");
             }
         } catch (IOException e) {
             System.out.println("Error reading the file: " + e.getMessage());
         }
-        article = article.replaceAll("[^a-zA-Z0-9\\s]", "");
-        String[] a = article.split("\\s+");
-        ArrayList<String> articleList = new ArrayList<>(Arrays.asList(a));
-        words.addAll(articleList);
-        return articleList;
+
+        String cleaned = article.toString().replaceAll("[^a-zA-Z0-9\\s]", "");
+        String[] a = cleaned.split("\\s+");
+        return new ArrayList<>(Arrays.asList(a));
     }
 }
