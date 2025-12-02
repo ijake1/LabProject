@@ -1,5 +1,8 @@
-import java.io.*;
-import java.util.*;
+import java.io.File;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Scanner;
+import java.util.Set;
 
 /**
  * The StopWords class is responsible for loading and storing
@@ -9,7 +12,7 @@ import java.util.*;
  */
 public class StopWords {
     // Stores all stop words loaded from the file
-    private ArrayList<String> words;
+    private Set<String> words;
 
     /**
      * Constructor that reads stop words from the given file path.
@@ -17,7 +20,7 @@ public class StopWords {
      * @param filePath the path to the stop words file
      */
     public StopWords(String filePath) {
-        words = new ArrayList<>();
+        words = new HashSet<>();
         try {
             Scanner sc = new Scanner(new File(filePath));
             while (sc.hasNextLine()) {
