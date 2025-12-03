@@ -30,5 +30,5 @@ To achieve this, we collected and articles about the same topics. Then each arti
 
 The application is composed using four distinct classes- Main, FileLoader, StopWords, and ArticleList. These seperate classes ensure clarity and processing that will help with more advanced features in future milestones.
 
-<img src="DiagramforMilestone2.png" alt="UML Diagram for Milestone 2">
+<img src="Milestone3UML.png" alt="UML Diagram for Milestone 3">
 
