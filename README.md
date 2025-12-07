@@ -32,10 +32,10 @@ The application is composed using four distinct classes- Main, FileLoader, StopW
 
 <img src="Milestone3UML.png" alt="UML Diagram for Milestone 3">
 
-##Refactors: 
-###In FileLoader.java
+## Refactors: 
+### In FileLoader.java
 - For this refactor, I took out the unused words field and used a StringBuilder to build the file text instead of the old method. The previous code was storing stuff it never used and was putting the text together in a less efficient way, this refactor makes the class simpler and faster.
-###In StopWords.java
+### In StopWords.java
 - For this refactor, I changed the internal list of stop words into a HashSet. The old version used an ArrayList, which had to search through every item each time a word was checked. Also switching to a HashSet makes lookups faster and the class runs better.
-###In ArticleList.java
+### In ArticleList.java
 - For this refactor, I added a buildfrequencymap helper method and used it in countwordfrequency and top5words. Before both methods repeated the same frequency counting code. I did this to remove the duplicate and make the class easier to maintain.
